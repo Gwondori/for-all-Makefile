@@ -82,5 +82,10 @@ $(TARGET): $(OBJS)
 	$(CC) $(LDFLAGS) $(CFLAGS) -c $< -o $@
 
 clean:
+ifeq ($(OS),Windows_NT)
 	$(RM) $(subst /,\,$(TOP_SRCS)/*.o)
 	$(RM) $(subst /,\,$(TARGET))
+else
+	$(RM) $(TOP_SRCS)/*.o
+	$(RM) $(TARGET)
+endif

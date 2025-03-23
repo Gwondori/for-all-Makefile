@@ -2,14 +2,12 @@
 
 TARGET_FILENAME := a
 
-$(info ARCH: $(OS) $(PROCESSOR_ARCHITECTURE))
-
 ifeq ($(OS),Windows_NT)
     TOP := $(shell cd ,)
     EXT_EXE := .exe
     RM := del
 
-    ifeq ($(PROCESSOR_ARCHITEW6432),AMD64)
+    ifeq ($(PROCESSOR_ARCHITECTURE),AMD64)
         LFLAGS := -L$(TOP)/libs/win/amd64
     else
         ifeq ($(PROCESSOR_ARCHITECTURE),AMD64)
